@@ -1,0 +1,226 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/styles.css">
+  <title>Calculator</title>
+
+
+  <style>
+    /* Ajoutez ces styles à votre fichier CSS existant */
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(to right, #3498db, #2ecc71); /* Fond dégradé stylisé */
+    }
+
+    h1 {
+      color: #fff;
+      text-align: center;
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 20px;
+    }
+
+    p {
+      color: #fff;
+      text-align: center;
+      font-family: 'Arial', sans-serif;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Reste de vos styles existants */
+
+    /* ... */
+
+  </style>
+
+
+
+
+
+
+<style>
+
+/* style.css */
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
+}
+
+.calculator {
+  text-align: center;
+  background-color: #333;
+  padding: 44px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#display {
+  width: 80%;
+  max-width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 20px;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+button {
+  width: 100%;
+  padding: 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px #192f6a;
+}
+
+/* Styling for number buttons */
+.number {
+  background-color: #3498db;
+  color: #fff;
+}
+
+.number:hover {
+  background-color: #2980b9;
+}
+
+/* Styling for operation buttons */
+.operation {
+  background-color: #2ecc71;
+  color: #fff;
+}
+
+.operation:hover {
+  background-color: #27ae60;
+}
+
+/* Styling for clear button */
+.clear {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+.clear:hover {
+  background-color: #c0392b;
+}
+
+</style>
+
+</head>
+
+
+
+
+
+
+
+
+<body>
+
+
+  
+
+  <div class="calculator">
+    <h1>Stylish Calculator</h1>
+    <p>A sleek and functional calculator with advanced mathematical features.</p>
+    <input type="text" id="display" disabled>
+    <!-- Reste de votre code HTML -->
+  </div>
+
+
+  <div class="calculator">
+    <input type="text" id="display" disabled>
+    <div class="buttons">
+      <button class="number" onclick="appendCharacter('7')">7</button>
+      <button class="number" onclick="appendCharacter('8')">8</button>
+      <button class="number" onclick="appendCharacter('9')">9</button>
+      <button class="operation" onclick="appendCharacter('+')">+</button>
+      <button class="number" onclick="appendCharacter('4')">4</button>
+      <button class="number" onclick="appendCharacter('5')">5</button>
+      <button class="number" onclick="appendCharacter('6')">6</button>
+      <button class="operation" onclick="appendCharacter('-')">-</button>
+      <button class="number" onclick="appendCharacter('1')">1</button>
+      <button class="number" onclick="appendCharacter('2')">2</button>
+      <button class="number" onclick="appendCharacter('3')">3</button>
+      <button class="operation" onclick="appendCharacter('*')">*</button>
+      <button class="number" onclick="appendCharacter('0')">0</button>
+      <button class="number" onclick="appendCharacter('.')">.</button>
+      <button class="operation" onclick="calculate()">=</button>
+      <button class="operation" onclick="appendCharacter('/')">/</button>
+      <button class="operation" onclick="appendCharacter('%')">%</button>
+      <button class="operation" onclick="appendCharacter('**')">^</button>
+      <button class="operation" onclick="appendCharacter('sqrt(')">√</button>
+      <button class="operation" onclick="appendCharacter('sin(')">sin</button>
+      <button class="operation" onclick="appendCharacter('cos(')">cos</button>
+      <button class="operation" onclick="appendCharacter('tan(')">tan</button>
+      <button class="operation" onclick="appendCharacter('(')">(</button>
+      <button class="operation" onclick="appendCharacter(')')">)</button>
+      <button class="clear" onclick="clearDisplay()">C</button>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="js/script.js"></script>
+
+<script>
+// script.js
+let display = document.getElementById('display');
+
+function appendCharacter(character) {
+  display.value += character;
+}
+
+function clearDisplay() {
+  display.value = '';
+}
+
+function calculate() {
+  try {
+    // Remplacer les caractères spéciaux avant d'évaluer l'expression
+    let expression = display.value
+      .replace(/sqrt\(/g, 'Math.sqrt(')
+      .replace(/sin\(/g, 'Math.sin(')
+      .replace(/cos\(/g, 'Math.cos(')
+      .replace(/tan\(/g, 'Math.tan(')
+      .replace(/\^/g, '**'); // Remplacer ^ par ** pour l'exposant
+
+    // Utiliser eval pour évaluer l'expression
+    display.value = eval(expression);
+  } catch (error) {
+    display.value = 'Error';
+  }
+}
+</script>
+</body>
+</html>
